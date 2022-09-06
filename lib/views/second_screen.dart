@@ -13,7 +13,7 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   List<PostsModel> postList = [];
-  Future<List<PostsModel>> PostApiData() async {
+  Future<List<PostsModel>> postApiData() async {
     var response =
         await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
     var data = jsonDecode(response.body.toString());
@@ -35,7 +35,7 @@ class _SecondScreenState extends State<SecondScreen> {
         children: [
           Expanded(
             child: FutureBuilder(
-              future: PostApiData(),
+              future: postApiData(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (!snapshot.hasData) {
                   return const Text('Loading');
